@@ -10,7 +10,7 @@
         <li>
             <input name="smscode" type="text" class="input" placeholder="这个功能三年后开放">
             <div class="getcode">
-                <a href="#">免费获取验证码</a>
+                <a href="#">获取验证码</a>
             </div>
         </li>
     </ul>
