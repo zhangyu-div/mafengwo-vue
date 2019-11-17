@@ -15,7 +15,7 @@ let actions={
     },
     handleloginaction({commit},params){
         commit("handlelogin",params);
-    }
+    },
 }
 let mutations={
     handlemutations(state,params){

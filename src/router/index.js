@@ -34,6 +34,11 @@ const router =new VueRouter({
             path:"/wenda",
             component:_=>import("@pages/wenda"),
             name:"wenda"
+        },
+        {
+            path:"/searchs",
+            component:_=>import("@pages/searchs"),
+            name:"searchs"
         }
     ]
 })

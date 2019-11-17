@@ -7,10 +7,13 @@
             </div>
             <div class="search">
                 <div class="searchbox">
-                    <form action="">
+                    <router-link action=""
+                    tag="form"
+                    to="/searchs"
+                    >
                         <input type="text" placeholder="搜索目的地/攻略/游记">
                         <input type="button">
-                    </form>
+                    </router-link>
                 </div>
             </div>
             <div class="login">

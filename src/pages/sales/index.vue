@@ -59,7 +59,6 @@
                 </ul>
                   <component :is="isshow"></component>
             </section>
-      
         </div>
     </div>
 </template>

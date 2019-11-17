@@ -74,10 +74,10 @@ import axios from "axios"
 export default {
     data(){
         return{
-
+         
         }
     },
-    name:"login",
+    name:"Login",
     methods:{
         toggle(){
             console.log( this.$refs.login.$el);
@@ -105,7 +105,12 @@ export default {
                         passward:this.$store.state.pwd,
                     }
                     })
-                    alert("注册成功,快去登录")
+                    alert("注册成功,即将为您跳转到登录页面");
+                    window.location.href="http://localhost:8080/#/login/now";
+                      this.$refs.login.$el.style.backgroundColor="#ffba33";
+                      this.$refs.login.$el.style.color="#fff";
+                      this.$store.state.account='';
+                      this.$store.state.pwd='';
                 }else{
                     alert("用户名重复,再想一个好听点的吧")
                 }
@@ -119,21 +124,33 @@ export default {
            this.$refs.login.$el.style.color="#fff";
             let zhanghaos=this.$store.state.loginaccount;
             let pwds=this.$store.state.loginpwd;
-            if(!zhanghaos||!pwds){
+            if((!zhanghaos||!pwds)){
                 alert("没填完呢就想登录想啥呢")
             }else{
                 axios({
                     method:"get",
                     url:'http://localhost:3000/registerlist?account='+zhanghaos,
                 }).then((res)=>{
-                    let mima=res.data[0].passward;
-                    if(res.data.length!=0&&mima==pwds){
-                        alert("登录成功")
-                    }else if(res.data.length=0){
-                        alert("此账号未注册")
-                    }else if(mima){
+                    console.log(res.data.length)
+                    if(res.data.length==0){
+                         alert("此账号未注册");
+                    }else if(res.data[0].passward!=pwds){
                         alert("密码输入错误")
+                    }else if(res.data.length!=0&&res.data[0].passward==pwds){
+                        alert("登录成功");
+                        this.$store.state.loginaccount='',
+                        this.$store.state.loginpwd='',
+                        window.location.href="http://localhost:8080/#/home";
                     }
+
+
+                    // if(res.data.length!=0&&mima==pwds){
+                    //     alert("登录成功")
+                    // }else if(res.data.length=0){
+                    //     alert("此账号未注册")
+                    // }else if(mima){
+                    //     alert("密码输入错误")
+                    // }
                 })
             }
         }  

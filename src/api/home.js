@@ -8,3 +8,4 @@ export const homenowApi=(id)=>http({
     }
     // tiji=fjdsliffsdfsdffdsf
 })
+

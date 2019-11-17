@@ -46,6 +46,11 @@ export default {
         let data= await salesnowApi();
         this.salesList=data;
         console.log(this.salesList)
+    },
+    beforeCreate(){
+        this.$observer.$on("sort",()=>{
+            console.log("hfskdj");
+        });
     }
 }
 </script>

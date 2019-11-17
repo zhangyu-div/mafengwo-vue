@@ -7,7 +7,7 @@ import  "@common/components";
 import store from "./store"
 Vue.use(VueTouch,{name:'v-touch'});
 Vue.config.productionTip = false
-
+Vue.prototype.$observer=new Vue();
 new Vue({
   store,
   router,
