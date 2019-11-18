@@ -34,23 +34,40 @@
     </section>
 </template>
 <script>
-import {salesnowApi} from "@api/sales";
+import axios from "axios";
+import {salessortApi} from "@api/sales";
 export default {
     name:"saleshome",
     data(){
         return{
-            salesList:[]
+            salesList:[],
+            flag:true
         }
     },
-    async created(){
-        let data= await salesnowApi();
-        this.salesList=data;
-        console.log(this.salesList)
+    created(){
+        this.$store.dispatch("handlesalesnormal");
+        console.log(this);
+        this.salesList=this.$store.state.normallist;
     },
-    beforeCreate(){
-        this.$observer.$on("sort",()=>{
-            console.log("hfskdj");
-        });
-    }
+
+    // async created(){
+    //         this.$observer.$on("sort",async ()=>{
+    //             this.flag=false;
+    //             await axios({
+    //                 method:"get",
+    //                 url:'http://localhost:3000/salesdata?_sort=moneysole&_order=asc',
+    //             }).then((res)=>{
+    //                 // console.log(res);
+    //                 this.salesList.length=0;
+    //                 this.salesList=res.data;
+    //                 console.log(this.salesList)
+    //             })
+    //         });  
+
+    //         if(this.flag){
+    //             let data= await salesnowApi();
+    //             this.salesList=data
+    //         }
+    // },
 }
 </script>

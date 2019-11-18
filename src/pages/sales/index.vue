@@ -152,6 +152,11 @@ export default {
                 }
             }
         }
+    },
+    created(){
+        this.$observer.$on("sort",()=>{
+            // this.isshow="Home";
+        });
     }
 }
 </script>
